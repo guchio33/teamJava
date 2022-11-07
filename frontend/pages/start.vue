@@ -1,3 +1,7 @@
 <template>
-    <h1>Start</h1>
+    <div>
+        ロゴ<img>
+        <button>ログインボタン</button>
+        <button>新規登録ボタン</button>
+    </div>
 </template>

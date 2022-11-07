@@ -1,5 +1,6 @@
 <template>
   <div>
-    <NuxtWelcome />
+    <!-- <nuxt-link to="/start">start</nuxt-link> -->
+    <NuxtPage />
   </div>
 </template>

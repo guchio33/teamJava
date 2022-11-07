@@ -13,7 +13,6 @@ RUN apt-get update -qq && apt-get install -y nodejs yarn
 RUN rm -rf /var/lib/apt/lists/*
 
 # ディレクトリ・ファイルの作成
-RUN mkdir /myapp
 WORKDIR /myapp
 COPY Gemfile /myapp/Gemfile
 COPY Gemfile.lock /myapp/Gemfile.lock

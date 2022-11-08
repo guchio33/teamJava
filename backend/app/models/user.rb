@@ -10,4 +10,6 @@ class User < ActiveRecord::Base
   belongs_to :school
   has_many :post
   has_many :like
+  has_many :room_user
+  has_many :message
 end

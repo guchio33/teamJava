@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_11_08_151517) do
+ActiveRecord::Schema.define(version: 2022_11_08_161045) do
 
   create_table "departments", charset: "utf8mb4", force: :cascade do |t|
     t.string "name"
@@ -24,6 +24,27 @@ ActiveRecord::Schema.define(version: 2022_11_08_151517) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "post_tag_relations", charset: "utf8mb4", force: :cascade do |t|
+    t.bigint "post_id", null: false
+    t.bigint "tag_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["post_id"], name: "index_post_tag_relations_on_post_id"
+    t.index ["tag_id"], name: "index_post_tag_relations_on_tag_id"
+  end
+
+  create_table "posts", charset: "utf8mb4", force: :cascade do |t|
+    t.string "title"
+    t.string "image"
+    t.text "comment"
+    t.bigint "user_id", null: false
+    t.bigint "status_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["status_id"], name: "index_posts_on_status_id"
+    t.index ["user_id"], name: "index_posts_on_user_id"
+  end
+
   create_table "schools", charset: "utf8mb4", force: :cascade do |t|
     t.string "name"
     t.integer "grade"
@@ -33,6 +54,18 @@ ActiveRecord::Schema.define(version: 2022_11_08_151517) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["department_id"], name: "index_schools_on_department_id"
     t.index ["faculty_id"], name: "index_schools_on_faculty_id"
+  end
+
+  create_table "statuses", charset: "utf8mb4", force: :cascade do |t|
+    t.string "status_name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "tags", charset: "utf8mb4", force: :cascade do |t|
+    t.string "tag"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", charset: "utf8mb4", force: :cascade do |t|
@@ -64,6 +97,10 @@ ActiveRecord::Schema.define(version: 2022_11_08_151517) do
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
+  add_foreign_key "post_tag_relations", "posts"
+  add_foreign_key "post_tag_relations", "tags"
+  add_foreign_key "posts", "statuses"
+  add_foreign_key "posts", "users"
   add_foreign_key "schools", "departments"
   add_foreign_key "schools", "faculties"
   add_foreign_key "users", "schools"

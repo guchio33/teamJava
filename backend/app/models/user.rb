@@ -7,5 +7,6 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :validatable
   include DeviseTokenAuth::Concerns::User
   # has_many :school, dependent: :destroy
-  belongs_to :school, dependent: :destroy
+  belongs_to :school
+  has_many :post
 end

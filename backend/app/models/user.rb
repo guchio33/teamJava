@@ -9,4 +9,5 @@ class User < ActiveRecord::Base
   # has_many :school, dependent: :destroy
   belongs_to :school
   has_many :post
+  has_many :like
 end

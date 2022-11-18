@@ -58,6 +58,8 @@ ActiveRecord::Schema.define(version: 2022_11_08_163210) do
     t.bigint "status_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "post_tag_relation_id", null: false
+    t.index ["post_tag_relation_id"], name: "index_posts_on_post_tag_relation_id"
     t.index ["status_id"], name: "index_posts_on_status_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
@@ -144,6 +146,7 @@ ActiveRecord::Schema.define(version: 2022_11_08_163210) do
   add_foreign_key "messages", "users"
   add_foreign_key "post_tag_relations", "posts"
   add_foreign_key "post_tag_relations", "tags"
+  add_foreign_key "posts", "post_tag_relations"
   add_foreign_key "posts", "statuses"
   add_foreign_key "posts", "users"
   add_foreign_key "room_messages", "messages"

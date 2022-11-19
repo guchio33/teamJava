@@ -30,6 +30,7 @@ services:
     working_dir: "/app"
     ports:
       - "3000:3000"
+      - "24678:24678"
     tty: true
     environment:
     - HOST=0.0.0.0

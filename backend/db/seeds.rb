@@ -5,3 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+#Tagテーブル
+Tag.create(tag: "名城大学")
+
+#Statusテーブル
+Status.create(status_name: "取引中")

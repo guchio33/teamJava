@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_11_08_163210) do
+ActiveRecord::Schema.define(version: 2022_11_19_035933) do
 
   create_table "departments", charset: "utf8mb4", force: :cascade do |t|
     t.string "name"
@@ -54,11 +54,11 @@ ActiveRecord::Schema.define(version: 2022_11_08_163210) do
     t.string "title"
     t.string "image"
     t.text "comment"
-    t.bigint "user_id", null: false
+    t.bigint "user_id"
     t.bigint "status_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "post_tag_relation_id", null: false
+    t.bigint "post_tag_relation_id"
     t.index ["post_tag_relation_id"], name: "index_posts_on_post_tag_relation_id"
     t.index ["status_id"], name: "index_posts_on_status_id"
     t.index ["user_id"], name: "index_posts_on_user_id"

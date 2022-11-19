@@ -1,0 +1,717 @@
+openapi: 3.1.0
+x-stoplight:
+  id: ski6h9g4fifl2
+info:
+  title: teamJava
+  version: '1.0'
+servers:
+  - url: 'http://localhost:3000'
+paths:
+  /register:
+    post:
+      summary: ''
+      operationId: post-register
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  userId:
+                    type: string
+                  userName:
+                    type: string
+                required:
+                  - userId
+                  - userName
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                userName:
+                  type: string
+                email:
+                  type: string
+                password:
+                  type: string
+              required:
+                - userName
+                - email
+                - password
+  /login:
+    post:
+      summary: ''
+      operationId: post-login
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  userId:
+                    type: string
+                  userName:
+                    type: string
+                required:
+                  - userId
+                  - userName
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+              required:
+                - email
+                - password
+  /post-lists:
+    get:
+      summary: ''
+      operationId: get-post-lists
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  productName:
+                    type: string
+                  productImage:
+                    type: string
+                  userName:
+                    type: string
+                  userIcon:
+                    type: string
+                  status:
+                    type: string
+                  createAt:
+                    type: string
+                required:
+                  - productName
+                  - productImage
+                  - userName
+                  - userIcon
+                  - status
+                  - createAt
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                searchWay:
+                  type: string
+                searchWord:
+                  type: string
+              required:
+                - searchWay
+  '/users/{user-id}':
+    parameters:
+      - schema:
+          type: string
+        name: user-id
+        in: path
+        required: true
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  userName:
+                    type: string
+                  comment:
+                    type: string
+                  userIcon:
+                    type: string
+                  evaluation:
+                    type: string
+                required:
+                  - userName
+                  - comment
+                  - userIcon
+                  - evaluation
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+      operationId: get-users-user-id
+    put:
+      summary: ''
+      operationId: put-users-user-id
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                userId:
+                  type: string
+                edit:
+                  type: object
+                  properties:
+                    userName:
+                      type: string
+                    email:
+                      type: string
+                    userIcon:
+                      type: string
+                    school:
+                      type: string
+                    comment:
+                      type: string
+              required:
+                - userId
+  /posts:
+    post:
+      summary: ''
+      operationId: post-posts
+      responses:
+        '201':
+          description: Created
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                productTitle:
+                  type: string
+                productImage:
+                  type: string
+                comment:
+                  type: string
+                tag:
+                  type: string
+              required:
+                - productTitle
+                - productImage
+  '/posts/{post-id}':
+    parameters:
+      - schema:
+          type: string
+        name: post-id
+        in: path
+        required: true
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  productTitle:
+                    type: string
+                  productImage:
+                    type: string
+                  comment:
+                    type: string
+                  tag:
+                    type: string
+                  status:
+                    type: string
+                required:
+                  - productTitle
+                  - productImage
+                  - comment
+                  - tag
+                  - status
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+      operationId: get-posts-post-id
+    put:
+      summary: ''
+      operationId: put-posts-post-id
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                productTitle:
+                  type: string
+                productImage:
+                  type: string
+                comment:
+                  type: string
+                tag:
+                  type: string
+                status:
+                  type: string
+  /message-room-lists:
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  latestMessage:
+                    type: string
+                  userId:
+                    type: string
+                  userName:
+                    type: string
+                  userIcon:
+                    type: string
+                required:
+                  - latestMessage
+                  - userId
+                  - userName
+                  - userIcon
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+      operationId: get-message-room-lists
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                searchWay:
+                  type: string
+                searchWord:
+                  type: string
+              required:
+                - searchWay
+  /message-rooms:
+    post:
+      summary: ''
+      operationId: post-message-rooms
+      responses:
+        '201':
+          description: Created
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                myUserId:
+                  type: string
+                userId:
+                  type: string
+                productId:
+                  type: string
+              required:
+                - myUserId
+                - userId
+                - productId
+  /messages:
+    post:
+      summary: ''
+      operationId: post-messages
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                messageRoomId:
+                  type: string
+                sentUserId:
+                  type: string
+                message:
+                  type: string
+              required:
+                - messageRoomId
+                - sentUserId
+                - message
+  '/messages/{message-room-id}':
+    parameters:
+      - schema:
+          type: string
+        name: message-room-id
+        in: path
+        required: true
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  sentUserId:
+                    type: string
+                  userIcon:
+                    type: string
+                  createAt:
+                    type: string
+                required:
+                  - message
+                  - sentUserId
+                  - userIcon
+                  - createAt
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+      operationId: get-messages-message-id
+  /evaluates:
+    post:
+      summary: ''
+      operationId: post-evaluates
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                userId:
+                  type: string
+                ratedUserId:
+                  type: string
+                evaluate:
+                  type: string
+                comment:
+                  type: string
+              required:
+                - userId
+                - ratedUserId
+                - evaluate
+        description: ''
+  /follows:
+    post:
+      summary: ''
+      operationId: post-follows
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                followId:
+                  type: string
+                followedId:
+                  type: string
+              required:
+                - followId
+                - followedId
+  '/follow-lists/{user-id}':
+    parameters:
+      - schema:
+          type: string
+        name: user-id
+        in: path
+        required: true
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  followUserId:
+                    type: string
+                  followUserName:
+                    type: string
+                  followUserIcon:
+                    type: string
+                required:
+                  - followUserId
+                  - followUserName
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+      operationId: get-follow-lists-user-id
+  '/followed-lists{user-id}':
+    parameters:
+      - schema:
+          type: string
+        name: user-id
+        in: path
+        required: true
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  followedUserId:
+                    type: string
+                  followedUserName:
+                    type: string
+                  followedUserIcon:
+                    type: string
+                required:
+                  - followedUserId
+                  - followedUserName
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+      operationId: get-followed-lists-user-id
+  /bookmark:
+    post:
+      summary: ''
+      operationId: post-bookmark
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                userId:
+                  type: string
+                productId:
+                  type: string
+              required:
+                - userId
+                - productId
+components:
+  schemas:
+    User:
+      title: User
+      type: object
+      description: ''
+      examples:
+        - id: 142
+          firstName: Alice
+          lastName: Smith
+          email: alice.smith@gmail.com
+          dateOfBirth: '1997-10-31'
+          emailVerified: true
+          signUpDate: '2019-08-24'
+      properties:
+        id:
+          type: integer
+          description: Unique identifier for the given user.
+        name:
+          type: string
+        email:
+          type: string
+          format: email
+        icon:
+          type: string
+      required:
+        - id
+        - name
+        - email
+
+x-internal: true

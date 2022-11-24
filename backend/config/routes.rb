@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
-      resources :test, only: %i[index]
+      resources :test
     end
   end
 
@@ -9,6 +9,6 @@ Rails.application.routes.draw do
     registrations: 'register'
   }
 
-  resources :sessions, only: %i[index]
+  # resources :sessions, only: %i[index]
 end
 

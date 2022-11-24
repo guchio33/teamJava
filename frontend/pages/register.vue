@@ -28,7 +28,7 @@ const register_password = ref('')
 let error_message = ref('')
 
 const registerUser = async () => {
-    useFetch(API_URL + '/api/v1/test', {
+    useFetch(API_URL + '/auth', {
         method: 'POST',
         headers: {},
         body: {
@@ -51,6 +51,7 @@ const registerUser = async () => {
         error_message.value = 'パスワードを入力してください'
         return
     }
+
     const register_data = {
         'userName': register_name,
         'email': register_email,

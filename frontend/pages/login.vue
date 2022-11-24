@@ -38,7 +38,7 @@ const loginUser = async () => {
 
     //TODO: APIの呼び出し
     try {
-        const loginUserController = await useFetch(API_URL, {
+        const loginUserController = await useFetch(API_URL + '/auth/sign_in', {
             method: 'POST',
             body: login_data
         })

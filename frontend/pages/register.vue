@@ -28,6 +28,15 @@ const register_password = ref('')
 let error_message = ref('')
 
 const registerUser = async () => {
+    useFetch(API_URL + '/api/v1/test', {
+        method: 'POST',
+        headers: {},
+        body: {
+            user: 'Test_user'
+        }
+    }).then((res)=>console.log(res))
+    .catch((e)=>console.log(e))
+
     if (!register_name.value) {
         error_message.value = '名前を入力してください'
         return

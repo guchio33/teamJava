@@ -8,7 +8,6 @@
             <label for="login-input-password">パスワード</label>
             <input id="login-input-password" type="text" v-model="login_password">
         </div>
-
         <button v-on:click="loginUser">ログイン</button>
         <p>{{ error_message }}</p>
     </div>

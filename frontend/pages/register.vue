@@ -27,7 +27,7 @@ const register_email = ref('')
 const register_password = ref('')
 let error_message = ref('')
 
-const registerUser = async () => {
+const registerUser = () => {
     // useFetch(API_URL + '/auth', {
     //     method: 'POST',
     //     headers: {},
@@ -61,10 +61,23 @@ const registerUser = async () => {
 
     //TODO: APIの呼び出し
     try {
-        const registerUserController = await useFetch(API_URL+ '/auth', {
+        const registerUserController = useFetch(API_URL+ '/auth', {
             method: 'POST',
-            headers: {},
-            body: register_data
+            body: register_data,
+            async onResponse({ request, response, options }) {
+                for (const header of response.headers.entries()) {
+                    console.log(`${header[0]}: ${header[1]} = ${header[0] == "access-token"}`)
+                    if (header[0] == "access-token") {
+                        localStorage.setItem("access_token", header[1])
+                    } else if (header[0] == "client") {
+                        localStorage.setItem("client", header[1])
+                    } else if (header[0] == "uid") {
+                        localStorage.setItem("uid", header[1])
+                    } else if (header[0] == "expiry") {
+                        localStorage.setItem("expiry", header[1])
+                    }
+                }
+            },
         })
         navigateTo({path: '/top'})
     } catch (e) {

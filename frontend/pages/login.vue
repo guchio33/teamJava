@@ -46,41 +46,35 @@ const loginUser = async () => {
     }
 
     //TODO: APIの呼び出し
-    // try {
-    //     const loginUserController = await useFetch(API_URL + '/auth/sign_in', {
-    //         method: 'POST',
-    //         body: login_data
-    //     })
-    //     .then((res) => {
-    //         console.log(res.data)
-    //         // setAuthDataFromResponse(res)
-    //         error_message.value = 'ログインしました'
-    //     })
-    //     // navigateTo({path: '/top'})
-
-    // } catch (e) {
-    //     console.log(e)
-    //     error_message.value = 'データの登録に失敗しました'
-    //     return
-    // }
     try {
-        const loginUserController = await axios.post(API_URL + '/auth/sign_in' ,{
-            email: login_email,
-            password: login_password,
+        useFetch(API_URL + '/auth/sign_in', {
+            method: 'POST',
+            body: login_data,
+            async onResponse({ request, response, options }) {
+                for (const header of response.headers.entries()) {
+                    console.log(`${header[0]}: ${header[1]} = ${header[0] == "access-token"}`)
+                    if (header[0] == "access-token") {
+                        localStorage.setItem("access_token", header[1])
+                    } else if (header[0] == "client") {
+                        localStorage.setItem("client", header[1])
+                    } else if (header[0] == "uid") {
+                        localStorage.setItem("uid", header[1])
+                    } else if (header[0] == "expiry") {
+                        localStorage.setItem("expiry", header[1])
+                    }
+                }
+            },
         })
         .then((response) => {
-            localStorage.setItem('access-token', response.headers['access-token'])
-            localStorage.setItem('client', response.headers['client'])
-            localStorage.setItem('uid', response.headers['uid'])
-            localStorage.setItem('expiry', response.headers['uid'])
-        }) 
+            error_message.value = 'ログインしました'
+        })
         navigateTo({path: '/top'})
+
     } catch (e) {
         console.log(e)
         error_message.value = 'データの登録に失敗しました'
         return
     }
-
 
 }
 </script>

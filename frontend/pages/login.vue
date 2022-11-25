@@ -22,6 +22,8 @@ import {
 } from '@/utils/auth-data'
 import {AuthHeaders} from '@/types/auth'
 import { AxiosResponse, AxiosError } from 'axios'
+import axios from 'axios'
+import { Session } from 'inspector';
 const API_URL = 'http://localhost:4000'
 
 const login_email = ref('')
@@ -42,24 +44,43 @@ const loginUser = async () => {
         'email': login_email,
         'password': login_password
     }
-    
-    //TODO: APIの呼び出し
-    try {
-        const loginUserController = await useFetch(API_URL + '/auth/sign_in', {
-            method: 'POST',
-            body: login_data
-        })
-        .then((res) => {
-            console.log(res)
-            // setAuthDataFromResponse(res)
-        })
-        navigateTo({path: '/top'})
 
+    //TODO: APIの呼び出し
+    // try {
+    //     const loginUserController = await useFetch(API_URL + '/auth/sign_in', {
+    //         method: 'POST',
+    //         body: login_data
+    //     })
+    //     .then((res) => {
+    //         console.log(res.data)
+    //         // setAuthDataFromResponse(res)
+    //         error_message.value = 'ログインしました'
+    //     })
+    //     // navigateTo({path: '/top'})
+
+    // } catch (e) {
+    //     console.log(e)
+    //     error_message.value = 'データの登録に失敗しました'
+    //     return
+    // }
+    try {
+        const loginUserController = await axios.post(API_URL + '/auth/sign_in' ,{
+            email: login_email,
+            password: login_password,
+        })
+        .then((response) => {
+            localStorage.setItem('access-token', response.headers['access-token'])
+            localStorage.setItem('client', response.headers['client'])
+            localStorage.setItem('uid', response.headers['uid'])
+            localStorage.setItem('expiry', response.headers['uid'])
+        }) 
+        navigateTo({path: '/top'})
     } catch (e) {
         console.log(e)
         error_message.value = 'データの登録に失敗しました'
         return
     }
+
 
 }
 </script>

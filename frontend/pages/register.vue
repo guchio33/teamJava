@@ -27,15 +27,15 @@ const register_email = ref('')
 const register_password = ref('')
 let error_message = ref('')
 
-const registerUser = async () => {
-    useFetch(API_URL + '/api/v1/test', {
-        method: 'POST',
-        headers: {},
-        body: {
-            user: 'Test_user'
-        }
-    }).then((res)=>console.log(res))
-    .catch((e)=>console.log(e))
+const registerUser = () => {
+    // useFetch(API_URL + '/auth', {
+    //     method: 'POST',
+    //     headers: {},
+    //     body: {
+    //         user: 'Test_user'
+    //     }
+    // }).then((res)=>console.log(res))
+    // .catch((e)=>console.log(e))
 
     if (!register_name.value) {
         error_message.value = '名前を入力してください'
@@ -51,23 +51,35 @@ const registerUser = async () => {
         error_message.value = 'パスワードを入力してください'
         return
     }
+
     const register_data = {
-        'userName': register_name,
+        'name': register_name,
         'email': register_email,
-        'password': register_password
+        'password': register_password,
+        'school_id': 1
     }
 
     //TODO: APIの呼び出し
     try {
-        const registerUserController = await useFetch(API_URL, {
+        const registerUserController = useFetch(API_URL+ '/auth', {
             method: 'POST',
-            body: register_data
+            body: register_data,
+            async onResponse({ request, response, options }) {
+                for (const header of response.headers.entries()) {
+                    console.log(`${header[0]}: ${header[1]} = ${header[0] == "access-token"}`)
+                    if (header[0] == "access-token") {
+                        localStorage.setItem("access_token", header[1])
+                    } else if (header[0] == "client") {
+                        localStorage.setItem("client", header[1])
+                    } else if (header[0] == "uid") {
+                        localStorage.setItem("uid", header[1])
+                    } else if (header[0] == "expiry") {
+                        localStorage.setItem("expiry", header[1])
+                    }
+                }
+            },
         })
-
-        //TODO: レスポンスが返ってきたらユーザーデータの保存
-
         navigateTo({path: '/top'})
-
     } catch (e) {
         console.log(e)
         error_message.value = 'データの登録に失敗しました'

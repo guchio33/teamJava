@@ -5,7 +5,9 @@ Rails.application.routes.draw do
     end
   end
 
-  mount_devise_token_auth_for 'User', at: 'auth'
+  mount_devise_token_auth_for 'User', at: 'auth', controllers: {
+    registrations: "auth/registrations"
+  }
 
   # resources :sessions, only: %i[index]
   resources :posts

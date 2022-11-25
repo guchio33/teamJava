@@ -15,10 +15,8 @@ Status.create(status_name: "取引中")
 #postテーブル
 Post.create!(title: "教科書", image:"aaa",comment:"去年使ってました",status_id:1)
 
-School.create(name: "名城大学", faculty_id:1, department_id:1, grade:4)
 #Faculite(学部)テーブル
 Faculty.create(name: "都市情報学部")
 #Department(学科)テーブル
 Department.create(name: "都市情報学科")
-
-curl -D - -H "access-token:e5ixlDfKv5nC5BniDpQ85A" -H "client:VEQFa8O7CMkLzh6qAaiNCw" -H "expiry:1670493555" -H "uid:test-user+1@example.com" -H "content-type:application/json" localhost:4000/auth/validate_token
+School.create(name: "名城大学", faculty_id:1, department_id:1, grade:4)

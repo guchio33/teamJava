@@ -28,14 +28,14 @@ const register_password = ref('')
 let error_message = ref('')
 
 const registerUser = async () => {
-    useFetch(API_URL + '/auth', {
-        method: 'POST',
-        headers: {},
-        body: {
-            user: 'Test_user'
-        }
-    }).then((res)=>console.log(res))
-    .catch((e)=>console.log(e))
+    // useFetch(API_URL + '/auth', {
+    //     method: 'POST',
+    //     headers: {},
+    //     body: {
+    //         user: 'Test_user'
+    //     }
+    // }).then((res)=>console.log(res))
+    // .catch((e)=>console.log(e))
 
     if (!register_name.value) {
         error_message.value = '名前を入力してください'
@@ -53,22 +53,20 @@ const registerUser = async () => {
     }
 
     const register_data = {
-        'userName': register_name,
+        'name': register_name,
         'email': register_email,
-        'password': register_password
+        'password': register_password,
+        'school_id': 1
     }
 
     //TODO: APIの呼び出し
     try {
-        const registerUserController = await useFetch(API_URL, {
+        const registerUserController = await useFetch(API_URL+ '/auth', {
             method: 'POST',
+            headers: {},
             body: register_data
         })
-
-        //TODO: レスポンスが返ってきたらユーザーデータの保存
-
         navigateTo({path: '/top'})
-
     } catch (e) {
         console.log(e)
         error_message.value = 'データの登録に失敗しました'

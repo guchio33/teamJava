@@ -14,15 +14,6 @@
 </template>
 
 <script setup lang="ts">
-import {
-  getAuthDataFromStorage,
-  removeAuthDataFromStorage,
-  setAuthDataFromResponse
-} from '@/utils/auth-data'
-import {AuthHeaders} from '@/types/auth'
-import { AxiosResponse, AxiosError } from 'axios'
-import axios from 'axios'
-import { Session } from 'inspector';
 const API_URL = 'http://localhost:4000'
 
 const login_email = ref('')
@@ -34,7 +25,6 @@ const loginUser = async () => {
         error_message.value = 'メールアドレスを入力してください'
         return
     }
-
     if (!login_password.value) {
         error_message.value = 'パスワードを入力してください'
         return
@@ -44,7 +34,7 @@ const loginUser = async () => {
         'password': login_password
     }
 
-    //TODO: APIの呼び出し
+    //api
     try {
         useFetch(API_URL + '/auth/sign_in', {
             method: 'POST',
@@ -64,11 +54,10 @@ const loginUser = async () => {
                 }
             },
         })
-        .then((response) => {
+        .then(() => {
             error_message.value = 'ログインしました'
         })
         navigateTo({path: '/top'})
-
     } catch (e) {
         console.log(e)
         error_message.value = 'データの登録に失敗しました'

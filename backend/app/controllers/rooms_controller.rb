@@ -58,6 +58,7 @@ class RoomsController < ApplicationController
         room = Room.find_by(id: params[:id])
         #自分以外のuserを全て取得
         other_user = room.users.where.not(id: current_user.id)[0]
+        #昇順(古い順)に並び替え
         messages = room.messages.order(created_at: :asc)
 
         render json: { other_user: other_user, messages: messages }

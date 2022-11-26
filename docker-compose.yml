@@ -9,6 +9,7 @@ services:
       - "3306:3306"
     volumes:
       - ./tmp/db:/var/lib/mysql
+    platform: linux/x86_64
 
   backend:
     build:

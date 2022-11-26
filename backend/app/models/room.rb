@@ -1,5 +1,5 @@
 class Room < ApplicationRecord
   belongs_to :post
-  has_many :room_user
-  has_many :room_message
+  has_many :messages, dependent: :destroy
+  has_many :entries, dependent: :destroy
 end

@@ -11,5 +11,9 @@ Rails.application.routes.draw do
 
   # resources :sessions, only: %i[index]
   resources :posts
+  resources :messages, only: [:create]
+  resources :rooms, only: [:create, :index, :show]
+  resources :users
+  
 end
 

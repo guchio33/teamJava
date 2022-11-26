@@ -1,32 +1,55 @@
 #ユーザー情報の詳細api
 
 class UsersController < ApplicationController
+    def index
+        users=User.all
+        render json: users
+    end 
+
+    #ユーザー情報
     def show
-        #投稿者
-        @user=User.find(params[:id])
-        render json: @user
-
-        #自分と投稿者を探す
-        # @current_entry = Room_user.where(user_id: current_user.id)
-        # render json: @current_entry
-        # @another_entry = Room_user.where(user_id: @user.id)
-
-        # unless @user.id == current_user.id #ログインしているか
-        #     #同じroom_idを取得
-        #     @current_entry.each do |current|
-        #         @another_entry.each do |another|
-        #           if current.room_id == another.room_id
-        #             @is_room = true
-        #             @room_id = current.room_id
-        #           end
-        #         end
-        #     end
-        #     #同じroom_idが存在しない場合、新しくインスタンスを作成。
-        #     unless @is_room
-        #         @room = Room.new
-        #         @entry = Entry.new
-        #     end
-        # end
+        user=User.find(params[:id])
+        #自分の情報
+        if user.id == current_user.id 
+            my_list = 
+                {
+                    id:user.id,
+                    icon:user.image,
+                    name: user.name,
+                    comment: user.comment
+                }
+            # rooms = Room.all
+            render json:my_list
+        #他の人の情報
+        else
+            user_list = 
+                {
+                    id:user.id,
+                    icon:user.image,
+                    name: user.name,
+                    comment: user.comment
+                }
+            # rooms = Room.all
+            render json:user_list
+        end
     end
 
+    #ユーザー情報変更
+    def update
+        user = User.find_by(id: params[:id])
+        if user.id == current_user.id
+            if user.update(user_params)
+                render json: user
+            else
+                render json: user.errors, status: 422
+            end
+        else
+            render json: {message: 'can not update data'}, status: 422
+        end
+    end
+
+    private
+    def user_params
+        params.permit(:name,:image,:comment)
+    end
 end

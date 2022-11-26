@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_11_26_073725) do
+ActiveRecord::Schema.define(version: 2022_11_26_091725) do
 
   create_table "departments", charset: "utf8mb4", force: :cascade do |t|
     t.string "name"
@@ -47,6 +47,8 @@ ActiveRecord::Schema.define(version: 2022_11_26_073725) do
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "room_id"
+    t.index ["room_id"], name: "index_messages_on_room_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
@@ -145,6 +147,7 @@ ActiveRecord::Schema.define(version: 2022_11_26_073725) do
   add_foreign_key "entries", "users"
   add_foreign_key "likes", "posts"
   add_foreign_key "likes", "users"
+  add_foreign_key "messages", "rooms"
   add_foreign_key "messages", "users"
   add_foreign_key "post_tag_relations", "posts"
   add_foreign_key "post_tag_relations", "tags"

@@ -13,7 +13,7 @@ Tag.create(tag: "名城大学")
 Status.create(status_name: "取引中")
 
 #postテーブル
-Post.create!(title: "教科書", image:"aaa",comment:"去年使ってました",status_id:1)
+Post.create!(title: "教科書", image:"aaa",comment:"去年使ってました",status_id:1,user_id:2)
 
 #Faculite(学部)テーブル
 Faculty.create(name: "都市情報学部")

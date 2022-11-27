@@ -10,6 +10,9 @@ class User < ActiveRecord::Base
   belongs_to :school
   has_many :post
   has_many :like
-  has_many :room_user
-  has_many :message
+
+  #DM機能
+  has_many :messages, dependent: :destroy
+  has_many :entries, dependent: :destroy
+  has_many :rooms, through: :entries
 end

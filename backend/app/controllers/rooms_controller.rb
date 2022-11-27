@@ -1,4 +1,5 @@
 class RoomsController < ApplicationController
+    before_action :authenticate_user!
     #自分が取引しているDM欄
     def index
         #降順(新しい順)に並び替え
@@ -7,7 +8,7 @@ class RoomsController < ApplicationController
             {
                 id:room.id,
                 current_user: room.users.where(id: current_user.id)[0],
-                other_user: room.users.where.not(id: current_api_v1_user.id)[0],
+                other_user: room.users.where.not(id: current_user.id)[0],
                 last_message: room.messages[-1]
             }
         end

@@ -20,7 +20,7 @@ class UsersController < ApplicationController
                 }
             # rooms = Room.all
             render json:my_list
-        #他の人の情報
+        #他者の情報
         else
             user_list = 
                 {
@@ -29,7 +29,6 @@ class UsersController < ApplicationController
                     name: user.name,
                     comment: user.comment
                 }
-            # rooms = Room.all
             render json:user_list
         end
     end

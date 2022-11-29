@@ -1,7 +1,7 @@
 <template>
     <div>
-        <h1>投稿一覧</h1>
-        <div v-for="dm in dmlist" :key="dm.id" >
+        <Header headerTitle="DM"/>
+        <div v-for="dm in dmlist" :key="dm.id" class="dm-container">
             <p>{{ dm.other_user.name}}</p>
             <p>{{ dm.last_message.message}}</p>
         </div> 
@@ -9,12 +9,10 @@
 </template>
 
 <script setup lant="ts">
+import Header from '../components/Header.vue';
 const API_URL = 'http://localhost:4000'
 
-const accessToken = localStorage.getItem('access_token')
-const client=localStorage.getItem('client')
-const expiry=localStorage.getItem('expiry')
-const uid=localStorage.getItem('uid')
+const { headerTitle } = defineProps();
 
 const { data: dmlists} = await useFetch(API_URL+'/rooms', 
     {headers:{

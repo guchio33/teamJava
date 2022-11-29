@@ -56,7 +56,8 @@ const loginUser = async () => {
             },
         })
         .then(() => {
-            error_message.value = 'ログインしました'
+            console.log("メッセージを送信しました")
+
         })
         navigateTo({path: '/top'})
     } catch (e) {

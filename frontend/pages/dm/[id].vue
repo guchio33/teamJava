@@ -28,21 +28,25 @@ const messages=messageArray.value.message
 console.log(messages)
 
 const message_data = {
-        'user_id': register_name,
-        'room_id': register_email,
-        'message': register_password,
-        'school_id': 1
-    }
+    'user_id': localStorage.getItem('current_id'),
+    'message': input_message,
+    'room_id': id,
+}
 
 const sendMessage=()=>{
-    const messageCreateController = useFetch(API_URL+ '/message', {
-            method: 'POST',
-            body: message_data,
+    const messageCreateController = useFetch(API_URL+ '/messages', {
+        method: 'POST',
+        body: message_data,
+        headers:{
+            'access_token': localStorage.getItem('access_token'),
+            'client': localStorage.getItem('client'),
+            'expiry': localStorage.getItem('expiry'),
+            'uid': localStorage.getItem('uid')
+        }
     })
     .then((e) => {
-            error_message.value = 'ログインしました'
-            console.log(e)
-        })
+        console.log(e)
+    })
 }
 </script>
 

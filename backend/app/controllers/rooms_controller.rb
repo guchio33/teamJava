@@ -13,7 +13,7 @@ class RoomsController < ApplicationController
             }
         end
         # rooms = Room.all
-        render json:rooms_array
+        render json:{dmlist:rooms_array}
     end
 
     #Roomの作成 取引開始後に起動

@@ -40,6 +40,7 @@ const loginUser = async () => {
             method: 'POST',
             body: login_data,
             async onResponse({ request, response, options }) {
+                localStorage.setItem("current_id", response._data.data.id)
                 for (const header of response.headers.entries()) {
                     console.log(`${header[0]}: ${header[1]} = ${header[0] == "access-token"}`)
                     if (header[0] == "access-token") {
@@ -50,7 +51,7 @@ const loginUser = async () => {
                         localStorage.setItem("uid", header[1])
                     } else if (header[0] == "expiry") {
                         localStorage.setItem("expiry", header[1])
-                    }
+                    } 
                 }
             },
         })

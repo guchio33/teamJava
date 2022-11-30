@@ -44,9 +44,9 @@ class PostsController < ApplicationController
     end
 
     private
-
     # ストロングパラメータ(?)
     def post_params
-        params.permit(:title, :image, :comment, :status_id, :post_tag_relation_id, :id)
+        params.permit(:title, :image, :comment, :status_id)
+    #   params.permit(:title, :image, :comment, :status_id, :post_tag_relation_id)
     end
 end

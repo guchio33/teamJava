@@ -11,6 +11,7 @@ Tag.create(tag: "名城大学")
 
 #Statusテーブル
 Status.create(status_name: "取引中")
+Status.create(status_name: "出品中")
 
 #postテーブル
 Post.create!(title: "教科書", image:"aaa",comment:"去年使ってました",status_id:1,user_id:2)

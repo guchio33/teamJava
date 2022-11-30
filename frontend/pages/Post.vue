@@ -27,7 +27,7 @@ const post_data = {
     'title': post_title,
     'comment': post_comment,
     'image': "aaaaa",
-    'status_id': 1,
+    'status_id': 17,
 }
 
 const post=()=>{

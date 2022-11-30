@@ -1,11 +1,8 @@
 <template>
     <div>
-        <Header headerTitle="DM"/>
-        <div v-for="message in messages" :key="messages.id"  >
-            <p>{{ message.message}}</p>
-        </div> 
-        <input type="text" v-model="input_message">
-        <button v-on:click="sendMessage()">送信</button>
+        <Header headerTitle="商品詳細"/>
+            <p>{{ post}}</p>
+            <button v-on:click="tradeStart()">取引開始</button>
     </div>
 </template>
 
@@ -14,29 +11,31 @@
 const API_URL = 'http://localhost:4000'
 const route = useRoute();
 const { id } = route.params;
-
 const input_message = ref('')
 
-const { data: messageArray} = await useFetch(API_URL+'/rooms/'+`${id}`, 
+//データの取得
+const { data: postDetailArray} = await useFetch(API_URL+'/posts/'+`${id}`, 
     {headers:{
         'access_token': localStorage.getItem('access_token'),
         'client': localStorage.getItem('client'),
         'expiry': localStorage.getItem('expiry'),
         'uid': localStorage.getItem('uid')
     }})
-const messages=messageArray.value.message
-console.log(messages)
+const post=postDetailArray.value
+console.log(post.image.url)
 
-const message_data = {
-    'user_id': localStorage.getItem('current_id'),
-    'message': input_message,
-    'room_id': id,
+const post_data = {
+    'title': post.title,
+    'comment': post.comment,
+    'image': post.image.url,
+    'status_id': 1,
 }
 
-const sendMessage=()=>{
-    const messageCreateController = useFetch(API_URL+ '/messages', {
-        method: 'POST',
-        body: message_data,
+//出品を取引開始に
+const tradeStart=()=>{
+    const messageCreateController = useFetch(API_URL+'/posts/'+`${id}`, {
+        method: 'PUT',
+        body: post_data,
         headers:{
             'access_token': localStorage.getItem('access_token'),
             'client': localStorage.getItem('client'),
@@ -48,6 +47,7 @@ const sendMessage=()=>{
         console.log(e)
     })
 }
+
 </script>
 
 <style lang="scss" scoped>

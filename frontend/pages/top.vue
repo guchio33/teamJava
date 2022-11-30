@@ -5,11 +5,15 @@
             <p>{{ post}}</p>
             <!-- <p>{{ dm.last_message.message}}</p> -->
         </div> 
+        <Footer />
+
     </div>
 </template>
 
 <script setup lant="ts">
 import Header from '../components/Header.vue';
+import Footer from '../components/Footer.vue';
+
 
 //DMリストの取得api
 const API_URL = 'http://localhost:4000'

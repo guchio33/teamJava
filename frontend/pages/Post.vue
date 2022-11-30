@@ -16,6 +16,7 @@
         <button v-on:click="post()">出品する</button>
         <!-- <p>{{ error_message }}</p> -->
     </div>
+    <Footer />
 </template>
 
 <script setup lant="ts">

@@ -18,6 +18,7 @@
                 <p>{{transaction}}</p>
             </div> 
         </div>
+        <Footer />
     </div>
 </template>
 

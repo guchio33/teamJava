@@ -2,7 +2,8 @@
     <div>
         <Header headerTitle="商品詳細"/>
             <p>{{ post}}</p>
-            <button v-on:click="tradeStart()">取引開始</button>
+            <button>取引中止</button>
+            <button v-on:click="moveEvaluate(post.user_id)">取引終了</button>
     </div>
 </template>
 
@@ -31,21 +32,8 @@ const post_data = {
     'status_id': 1,
 }
 
-//出品を取引開始に
-const tradeStart=()=>{
-    const messageCreateController = useFetch(API_URL+'/posts/'+`${id}`, {
-        method: 'PUT',
-        body: post_data,
-        headers:{
-            'access_token': localStorage.getItem('access_token'),
-            'client': localStorage.getItem('client'),
-            'expiry': localStorage.getItem('expiry'),
-            'uid': localStorage.getItem('uid')
-        }
-    })
-    .then((e) => {
-        console.log(e)
-    })
+const moveEvaluate=(user_id)=>{
+    navigateTo({path: "/evaluate/"+`${user_id}`})
 }
 
 </script>

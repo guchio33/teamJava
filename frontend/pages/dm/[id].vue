@@ -9,7 +9,7 @@
     </div>
 </template>
 
-<script setup lant="ts">
+<script setup >
 //DMリストの取得api
 const API_URL = 'http://localhost:4000'
 const route = useRoute();

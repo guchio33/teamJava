@@ -75,15 +75,6 @@ ActiveRecord::Schema.define(version: 2022_11_26_091725) do
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
-  create_table "room_messages", charset: "utf8mb4", force: :cascade do |t|
-    t.bigint "room_id", null: false
-    t.bigint "message_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["message_id"], name: "index_room_messages_on_message_id"
-    t.index ["room_id"], name: "index_room_messages_on_room_id"
-  end
-
   create_table "rooms", charset: "utf8mb4", force: :cascade do |t|
     t.bigint "post_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -154,8 +145,6 @@ ActiveRecord::Schema.define(version: 2022_11_26_091725) do
   add_foreign_key "posts", "post_tag_relations"
   add_foreign_key "posts", "statuses"
   add_foreign_key "posts", "users"
-  add_foreign_key "room_messages", "messages"
-  add_foreign_key "room_messages", "rooms"
   add_foreign_key "rooms", "posts"
   add_foreign_key "schools", "departments"
   add_foreign_key "schools", "faculties"

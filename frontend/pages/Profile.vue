@@ -2,6 +2,7 @@
     <div>
         <Header headerTitle="マイページ"/>
         <p>{{profile.name}}</p>
+        <Footer />
     </div>
 </template>
 

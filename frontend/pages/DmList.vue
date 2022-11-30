@@ -6,11 +6,13 @@
             <!-- <p>{{ dm.other_user.name}}</p> -->
             <p>{{ dm.last_message.message}}</p>
         </div> 
+        <Footer />
     </div>
 </template>
 
 <script setup lant="ts">
 import Header from '../components/Header.vue';
+
 
 //DMリストの取得api
 const API_URL = 'http://localhost:4000'

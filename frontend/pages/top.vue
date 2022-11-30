@@ -1,7 +1,7 @@
 <template>
     <div>
         <Header headerTitle="ロゴ"/>
-        <div v-for="post in postlist" :key="post.id" class="dm-container" v-on:click="moveDm(post.id)">
+        <div v-for="post in postlist" :key="post.id" class="dm-container" v-on:click="movePostDetail(post.id)">
             <p>{{ post}}</p>
             <!-- <p>{{ dm.last_message.message}}</p> -->
         </div> 
@@ -23,7 +23,7 @@ const { data: postlists} = await useFetch(API_URL+'/posts',
 const postlist=postlists.value
 console.log(postlists.value)
 
-const moveDm=(post_id)=>{
+const movePostDetail=(post_id)=>{
     console.log(post_id)
     navigateTo({path: "/postdetail/"+`${post_id}`})
 }

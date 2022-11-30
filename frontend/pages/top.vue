@@ -1,6 +1,6 @@
 <template>
     <div>
-        <Header headerTitle="ロゴ"/>
+        <Header headerTitle="一覧"/>
         <div v-for="post in postlist" :key="post.id" class="dm-container" v-on:click="movePostDetail(post.id)">
             <p>{{ post}}</p>
             <!-- <p>{{ dm.last_message.message}}</p> -->

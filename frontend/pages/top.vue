@@ -53,10 +53,10 @@ $main-color: #FF7F50;
 .searchbar{
     border: 2px solid $main-color;
     border-radius: 16px;
-    width: 314px;
+    width: 80%;
     height: 32px;
     margin-top: 15px;   
-    margin-left: 7%;  
+    margin-left: 8%;  
     // transform: translateY(-10%) translateX(10%);              
 }
 
@@ -75,10 +75,10 @@ $main-color: #FF7F50;
 .post-list{
     display: flex;
     flex-wrap: wrap;
-    margin-left: 3%;
+    margin-left: 4%;
 }
 .post-container{
-    width: 160px;
+    width: 40%;
     height: 220px;
     background: #FFFFFF;
     border-radius: 6px;
@@ -104,7 +104,7 @@ $main-color: #FF7F50;
     &-img{
         width: 100px;
         height: 130px;
-        margin-left: 15%;
+        margin-left: 19%;
     }
     &-sub{
         display: flex;

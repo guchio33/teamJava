@@ -41,6 +41,7 @@ $main-color: #FF7F50;
 $sub-color:#4E4E4E;
 .dmlist{
     margin-top: 20%;
+    background-color: #FFFFFF;
 }
 .dm-container{
     display: flex;

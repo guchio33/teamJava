@@ -128,7 +128,6 @@ $sub-color:#4E4E4E;
     &-tradebutton{
         background-color: $main-color;
         color: white;
-        box-shadow: 0 0 5px gray;
         border: 0;
         height: 40px;
         width: 80%; 

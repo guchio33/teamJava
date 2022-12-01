@@ -20,7 +20,7 @@ body{
 
 .app-container{
   margin-top: 70px;
-  margin-bottom: 70px;
+  margin-bottom: 30px;
 }
 
 </style>

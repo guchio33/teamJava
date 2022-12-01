@@ -75,6 +75,7 @@ $main-color: #FF7F50;
 .post-list{
     display: flex;
     flex-wrap: wrap;
+    margin-left: 3%;
 }
 .post-container{
     width: 160px;

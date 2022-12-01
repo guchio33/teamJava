@@ -4,6 +4,7 @@
         <input type="text" v-model="input_message">
         <button v-on:click="sendEvaluate()">送信</button>
         <button v-on:click="moveTradelist()">閉じる</button>
+        <Footer />
     </div>
 </template>
 

@@ -24,7 +24,7 @@ footer{
     bottom: 0; 
     background-color: white;
     width: 100%;
-    height: 50px;
+    height: 70px;
     text-align: center;
 }
 .home-icon{

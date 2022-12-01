@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div >
         <Header headerTitle="DM"/>
         <div v-for="dm in dmlist" :key="dm.id" class="dm-container" v-on:click="moveDm(dm.last_message.room_id)">
             <img src="../images/coffee.jpg" class="dm-container-user-icon">

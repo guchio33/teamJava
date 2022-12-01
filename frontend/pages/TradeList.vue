@@ -25,19 +25,18 @@
 <script setup lant="ts">
 import Header from '../components/Header.vue';
 
-let exhibitView = true
-let transaction = false
-
+let exhibitView = ref(true)
+let transaction = ref(false)
 
 //画面の切り替え
 const showExhibit=()=>{
-    exhibitView = true
-    transaction = false
+    exhibitView.value = true
+    transaction.value = false
     console.log(exhibitView)
 }
 const showTransaction=()=>{
-    exhibitView = false
-    transaction = true
+    exhibitView.value = false
+    transaction.value = true
     console.log("取引中")
     console.log(exhibitView)
 }

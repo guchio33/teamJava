@@ -83,7 +83,7 @@ footer{
     border-radius: 50%;
     box-shadow: 0 0 8px gray;
     margin-top: -10px;
-    margin-left: 9%;
+    margin-left: 7%;
     &-img{
         width: 30px;
         height: 30px;

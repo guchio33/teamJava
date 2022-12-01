@@ -11,9 +11,13 @@
                     <img src="../images/coffee.jpg" class="post-container-user-icon">
                     <p class="post-container-user-name">User</p>
                 </div>
-                <p class="post-container-title">{{ post.title}}</p>
-                <img src="" class="post-container-img">
-                <p class="post-container-tag">名城大学</p>
+                <img src="../images/sample1.jpg" class="post-container-img">
+                <div class="post-container-sub">
+                    <p class="post-container-sub-title">{{ post.title}}</p>
+                    <div class="post-container-sub-tag">
+                        <p class="post-container-sub-tag-text">名城大学</p>
+                    </div>
+                </div>
             </div> 
         </div>
         <Footer />
@@ -81,13 +85,48 @@ $main-color: #FF7F50;
     margin-top: 6%;
     margin-left: 4%;
     margin-right: 4%;
-}
 
-.post-container-user{
+    &-user{
+    display: flex;
         &-icon{
-            width: 30px;
-            height: 30px;
+            width: 25px;
+            height: 25px;
             border-radius: 50%;
+            margin-top: 8px;
+            margin-left: 5px;
+        }
+        &-name{
+            margin-top: 10px;
+            margin-left: 7px;
         }
     }
+    &-img{
+        width: 100px;
+        height: 130px;
+        margin-left: 15%;
+    }
+    &-sub{
+        display: flex;
+        &-title{
+            font-weight: 600;
+            margin-left: 10px;
+            margin-top: 3px;
+        }
+        &-tag{
+            width: 50px;
+            height: 15px;
+            border: 1px solid $main-color;
+            border-radius: 10px;
+            margin-left: 15%;
+            margin-top: 4%;
+            &-text{
+                font-size: 10px;
+                color:$main-color;
+                margin-top: 1%;
+                margin-left: 10%;
+            }
+        }
+    }
+}
+
 </style>

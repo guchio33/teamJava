@@ -12,18 +12,22 @@
 const API_URL = 'http://localhost:4000'
 const route = useRoute();
 const { id } = route.params;
+console.log("id:"+id)
 const input_message = ref('')
 
+
 //データの取得
-const { data: postDetailArray} = await useFetch(API_URL+'/posts/'+`${id}`, 
+const { data: postDetailArray}= await useFetch(API_URL+'/posts/'+`${id}`, 
     {headers:{
         'access_token': localStorage.getItem('access_token'),
         'client': localStorage.getItem('client'),
         'expiry': localStorage.getItem('expiry'),
         'uid': localStorage.getItem('uid')
     }})
+    console.log("id:"+id)
+
 const post=postDetailArray.value
-console.log(post.image.url)
+console.log(post)
 
 const post_data = {
     'title': post.title,

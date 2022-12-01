@@ -1,9 +1,10 @@
 []<template>
     <div>
-        <Header headerTitle="商品詳細"/>
-            <p>{{ post}}</p>
-            <button>取引中止</button>
-            <button v-on:click="moveEvaluate(post.user_id)">取引終了</button>
+        <HeaderChild headerTitle="取引情報" path="/tradelist"/>
+        <p>{{ post}}</p>
+        <button>取引中止</button>
+        <button v-on:click="moveEvaluate(post.user_id)">取引終了</button>
+        <Footer />
     </div>
 </template>
 

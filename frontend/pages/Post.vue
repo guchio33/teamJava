@@ -1,22 +1,24 @@
 <template>
-    <Header headerTitle="出品"/>
-    <div class="exhibit-input-container">
-        <div class="exhibit-input-name-container">
-            <label for="exhibit-input-name">商品名</label>
-            <input type="text" id="exhibit-input-name" v-model="post_title">
+    <div>
+        <Header headerTitle="出品"/>
+        <div class="exhibit-input-container">
+            <div class="exhibit-input-name-container">
+                <label for="exhibit-input-name">商品名</label>
+                <input type="text" id="exhibit-input-name" v-model="post_title">
+            </div>
+            <div class="exhibit-input-img-container">
+                <label for="exhibit-input-img">商品画像</label>
+                <input type="file" id="exhibit-input-img" >
+            </div>
+            <div class="exhibit-input-comment-container">
+                <label for="exhibit-input-comment">コメント</label>
+                <input type="text" id="exhibit-input-comment" v-model="post_comment">
+            </div>
+            <button v-on:click="post()">出品する</button>
+            <!-- <p>{{ error_message }}</p> -->
         </div>
-        <div class="exhibit-input-img-container">
-            <label for="exhibit-input-img">商品画像</label>
-            <input type="file" id="exhibit-input-img" >
-        </div>
-        <div class="exhibit-input-comment-container">
-            <label for="exhibit-input-comment">コメント</label>
-            <input type="text" id="exhibit-input-comment" v-model="post_comment">
-        </div>
-        <button v-on:click="post()">出品する</button>
-        <!-- <p>{{ error_message }}</p> -->
+        <Footer />
     </div>
-    <Footer />
 </template>
 
 <script setup lant="ts">
@@ -47,4 +49,13 @@ const post=()=>{
     })
 }
 </script>
+
+<style lang="scss" scoped>
+.exhibit-input{
+    &-container{
+        margin-left: 8px;
+        margin-right: 8px; 
+    }
+}
+</style>
 

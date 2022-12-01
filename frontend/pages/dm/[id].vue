@@ -1,6 +1,6 @@
 <template>
     <div>
-        <Header headerTitle="DM"/>
+        <HeaderChild headerTitle="DM" path="/dmlist"/>
         <div v-for="message in messages" :key="messages.id"  >
             <p>{{ message.message}}</p>
         </div> 

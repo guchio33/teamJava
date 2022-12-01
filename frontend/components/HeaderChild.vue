@@ -1,11 +1,16 @@
 <template>
     <header >
+        <img src="../images/backbuttonwhite.png" v-on:click="MoveBack(path)">
         <h1 class="dmlist-title">{{headerTitle}}</h1>
     </header>
 </template>
 
-<script setup lang="ts">
-defineProps(['headerTitle']);
+<script setup >
+defineProps(['headerTitle','path']);
+
+const MoveBack=(path)=>{
+    navigateTo({path: path})
+}
 </script>
 
 <style>
@@ -15,6 +20,7 @@ header{
     height: 70px;
     position: fixed;
     top: 0; 
+    display: flex;
 }
 .dmlist-title{
     color: white;
@@ -23,6 +29,6 @@ header{
     left:  0;                    
     right:  0;                   
     bottom:  0;                  
-    margin:  auto;     
+    margin:  auto;  
 }
 </style>

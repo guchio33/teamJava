@@ -1,25 +1,44 @@
 <template>
-    <div>
-        <Header headerTitle="取引"/>
-        <button v-on:click="showExhibit()">取引</button>
-        <button v-on:click="showTransaction()">出品</button>
-
-        <div v-if="exhibitView">
-            <div  v-for=" exhibit in exhibitList" :key=" exhibit.id" class="dm-container" v-on:click="movetrade(exhibit.id)">
-                <img src="../images/coffee.jpg" class="dm-container-user-icon">
-                <p>{{exhibit}}</p>
-            </div> 
+    <Header headerTitle="取引"/>
+    <div class="trade">
+        <div class="button">
+            <button class="button-exhivit" v-on:click="showExhibit()">取引</button>
+            <button class="button-transaction" v-on:click="showTransaction()">出品</button>
         </div>
-
-        <div v-if="transaction">
-            <div v-for=" transaction in transactionList" :key=" transaction.id" class="dm-container" v-on:click="movetrade(transaction.id)">
-                <img src="../images/coffee.jpg" class="dm-container-user-icon">
-                <!-- <p>{{ dm.other_user.name}}</p> -->
-                <p>{{transaction}}</p>
-            </div> 
+        <div class="trade-list">
+            <div v-if="exhibitView">
+                <div  v-for=" exhibit in exhibitList" :key=" exhibit.id" class="trade-container" v-on:click="movetrade(exhibit.id)">
+                    <div class="trade-container-user">
+                        <img src="../images/coffee.jpg" class="trade-container-user-icon">
+                        <p class="trade-container-user-name">User</p>
+                    </div>
+                    <img src="../images/sample1.jpg" class="trade-container-img">
+                    <div class="trade-container-sub">
+                        <p class="trade-container-sub-title">{{ exhibit.title}}</p>
+                        <div class="trade-container-sub-tag">
+                            <p class="trade-container-sub-tag-text">名城大学</p>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+            <div v-if="transaction">
+                <div v-for=" transaction in transactionList" :key=" transaction.id" class="trade-container" v-on:click="movetrade(transaction.id)">
+                    <div class="trade-container-user">
+                        <img src="../images/coffee.jpg" class="trade-container-user-icon">
+                        <p class="trade-container-user-name">User</p>
+                    </div>
+                    <img src="../images/sample1.jpg" class="trade-container-img">
+                    <div class="trade-container-sub">
+                        <p class="trade-container-sub-title">{{ transaction.title}}</p>
+                        <div class="trade-container-sub-tag">
+                            <p class="trade-container-sub-tag-text">名城大学</p>
+                        </div>
+                    </div> 
+                </div>
+            </div>
         </div>
-        <Footer />
     </div>
+    <Footer />
 </template>
 
 <script setup lant="ts">
@@ -64,14 +83,87 @@ const movetrade=(trade_id)=>{
 
 <style lang="scss" scoped>
 $main-color: #FF7F50;
-.dm-container{
-    display: flex;
-    border-bottom: solid 2px $main-color;
 
-    &-user-icon{
-        border-radius: 50%;
-        width: 30px;
-        height: 30px;
+.trade{
+    margin-top: 25%;
+    &-list{
+        margin-left: 20%;
+    }
+}
+.button{
+    text-align: center;
+    &-exhivit{
+        width: 102px;
+        height: 33px;
+        margin-right: 5%;
+        background-color: $main-color;
+        color: white;
+        border: 0;
+        border-radius: 3px;
+    }
+    &-transaction{
+        width: 102px;
+        height: 33px;
+        margin-left: 5%;
+        background-color: $main-color;
+        color: white;
+        border: 0;
+        border-radius: 3px;
+    }
+}
+
+
+
+.trade-container{
+    width: 70%;
+    height: 280px;
+    background: #FFFFFF;
+    border-radius: 6px;
+    box-shadow: 0 0 5px gray;
+    margin-top: 6%;
+    text-align: center;
+
+    &-user{
+    display: flex;
+        &-icon{
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            margin-top: 12px;
+            margin-left: 10px;
+        }
+        &-name{
+            margin-top: 16px;
+            margin-left: 10px;
+        }
+    }
+    &-img{
+        width: 130px;
+        height: 175px;
+        text-align: center;
+    }
+    &-sub{
+        display: flex;
+        &-title{
+            font-weight: 600;
+            margin-left: 10px;
+            margin-top: 3px;
+            font-size: 20px;
+        }
+        &-tag{
+            width: 50px;
+            height: 15px;
+            border: 1px solid $main-color;
+            border-radius: 10px;
+            margin-left: 15%;
+            margin-top: 4%;
+            &-text{
+                font-size: 10px;
+                color:$main-color;
+                margin-top: 1%;
+                margin-left: 10%;
+            }
+        }
     }
 }
 </style>

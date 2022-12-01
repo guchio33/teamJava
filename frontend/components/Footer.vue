@@ -84,6 +84,7 @@ footer{
     box-shadow: 0 0 8px gray;
     margin-top: -10px;
     margin-left: 9%;
+    text-align: center;
     &-img{
         width: 30px;
         height: 30px;

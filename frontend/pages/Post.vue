@@ -2,15 +2,15 @@
     <div>
         <Header headerTitle="出品"/>
         <div class="exhibit-input-container">
-            <div class="exhibit-input-name-container">
-                <label for="exhibit-input-name">商品名</label>
+            <div class="exhibit-input-container-name">
+                <label for="exhibit-input-name" class="">商品名</label>
                 <input type="text" id="exhibit-input-name" v-model="post_title">
             </div>
-            <div class="exhibit-input-img-container">
+            <div class="exhibit-input-container-img">
                 <label for="exhibit-input-img">商品画像</label>
                 <input type="file" id="exhibit-input-img" >
             </div>
-            <div class="exhibit-input-comment-container">
+            <div class="exhibit-input-container-comment">
                 <label for="exhibit-input-comment">コメント</label>
                 <input type="text" id="exhibit-input-comment" v-model="post_comment">
             </div>
@@ -51,10 +51,18 @@ const post=()=>{
 </script>
 
 <style lang="scss" scoped>
-.exhibit-input{
-    &-container{
-        margin-left: 8px;
-        margin-right: 8px; 
+.exhibit-input-container{
+    margin-left: 8px;
+    margin-right: 8px; 
+    margin-top: 108px;
+    &-name{
+        
+    }
+    &-img{
+
+    }
+    &-comment{
+
     }
 }
 </style>

@@ -6,6 +6,7 @@
         </div> 
         <input type="text" v-model="input_message">
         <button v-on:click="sendMessage()">送信</button>
+        <Footer />
     </div>
 </template>
 

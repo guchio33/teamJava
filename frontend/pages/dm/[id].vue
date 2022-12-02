@@ -4,8 +4,8 @@
         <div class="dm-background">
             <div v-for="message in messages" :key="messages.id" class="dm-container" >
                 <!-- 相手 -->
-                <div v-if="(message.user_id!==current_id)" class="dm-container-other">
-                    <img class="dm-container-other-icon" src="../../images/coffee.jpg" >
+                <div v-if="(message.user_id!=current_id)" class="dm-container-other">
+                    <img class="dm-container-other-icon" src=message. >
                     <p class="dm-container-other-message">{{ message.message}}</p>
                 </div>
                 <!-- 自分 -->
@@ -29,8 +29,8 @@ const route = useRoute();
 const { id } = route.params;
 
 const input_message = ref('')
-const current_id= localStorage.getItem('current_id').value
-
+const current_id= ref(localStorage.getItem('current_id'))
+console.log(current_id)
 const { data: messageArray} = await useFetch(API_URL+'/rooms/'+`${id}`, 
     {headers:{
         'access_token': localStorage.getItem('access_token'),

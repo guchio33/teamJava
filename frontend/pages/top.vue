@@ -28,6 +28,13 @@
 import Header from '../components/Header.vue';
 import Footer from '../components/Footer.vue';
 
+// console.log(localStorage)
+
+onMounted(() => {
+    if (localStorage.current_user) {
+      this.isLoggin = localStorage.currentUser.token !== null
+    }
+})
 
 //DMリストの取得api
 const API_URL = 'http://localhost:4000'

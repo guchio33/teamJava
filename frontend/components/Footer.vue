@@ -47,6 +47,7 @@ footer{
     background-color: white;
     width: 100%;
     height: 70px;
+    border-top: 0.5px solid #4E4E4E;
 }
 .footer-bar{
     display: flex;

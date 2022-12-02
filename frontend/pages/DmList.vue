@@ -40,13 +40,13 @@ const moveDm=(room_id)=>{
 $main-color: #FF7F50;
 $sub-color:#4E4E4E;
 .dmlist{
-    margin-top: 20%;
+    margin-top: 24%;
     background-color: #FFFFFF;
     margin-left: 3%;
 }
 .dm-container{
     display: flex;
-    margin-top: 20px;
+    margin-top: 24px;
     width: 90%;
     height: 100px;
     background: #FFFFFF;

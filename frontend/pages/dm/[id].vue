@@ -4,7 +4,7 @@
         <div class="dm-background">
             <div v-for="message in messages" :key="messages.id" class="dm-container" >
                 <!-- 相手 -->
-                <div v-if="(message.user_id!==current_id)" class="dm-container-other">
+                <div v-if="(message.user_id!=current_id)" class="dm-container-other">
                     <img class="dm-container-other-icon" src="../../images/coffee.jpg" >
                     <p class="dm-container-other-message">{{ message.message}}</p>
                 </div>
@@ -13,10 +13,11 @@
                     <p class="dm-container-current-message">{{ message.message}}</p>
                 </div>
             </div>
-        </div>
-        <div class="send-message"> 
-            <input class="send-message-input" type="text" v-model="input_message">
-            <img class="send-message-button" src="../../images/send.png" v-on:click="sendMessage()">
+        
+            <div class="send-message"> 
+                <input class="send-message-input" type="text" v-model="input_message">
+                <img class="send-message-button" src="../../images/send.png" v-on:click="sendMessage()">
+            </div>
         </div>
         <Footer />
     </div>

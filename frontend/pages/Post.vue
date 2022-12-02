@@ -51,6 +51,7 @@ const post=()=>{
     })
     .then((e) => {
         console.log(e)
+        navigateTo({path: '/top'})
     })
 }
 </script>

@@ -13,7 +13,7 @@ class RoomsController < ApplicationController
             }
         end
         # rooms = Room.all
-        render json:rooms_array
+        render json:{dmlist:rooms_array}
     end
 
     #Roomの作成 取引開始後に起動
@@ -62,6 +62,6 @@ class RoomsController < ApplicationController
         #昇順(古い順)に並び替え
         messages = room.messages.order(created_at: :asc)
 
-        render json: { other_user: other_user, messages: messages }
+        render json: { other_user: other_user, message: messages }
     end
 end

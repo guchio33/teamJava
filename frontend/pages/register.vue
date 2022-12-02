@@ -115,11 +115,12 @@ img.modoru{
 
 .register-input-container{
     margin-top: 10%;
-    margin-left: 8%;
+    
     &-name{
         &-label{
             font-size: 20px;
             margin-right:  12%;
+            margin-left: 8%;
         }
         &-input{
             margin-left: 10%;
@@ -135,6 +136,8 @@ img.modoru{
             font-size: 20px;
             margin-right: 15%;
             padding-top: 1px;
+            margin-left: 8%;
+
         }
         &-input{
             margin-left: 2%;
@@ -151,6 +154,7 @@ img.modoru{
             font-size: 20px;
             margin-right: 4%;
             padding-top: 1px;
+            margin-left: 8%;
         }
         &-input{
             margin-left: 2%;

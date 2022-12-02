@@ -1,19 +1,26 @@
 <template>
-    <div class="login-input-container">
-        <div class="login-input-mail-container">
-            <label for="login-input-mail">e-mail</label>
-            <input id="login-input-mail" type="email" v-model="login_email">
+    <div class="login-container">
+        <img src="../images/Group_86.png" alt="[画像]" class="modoru" v-on:click="backtop()">
+        <div>
+            <h1 class="login-title">ログイン</h1>
         </div>
-        <div class="login-input-password-container">
-            <label for="login-input-password">パスワード</label>
-            <input id="login-input-password" type="text" v-model="login_password">
+        <div class="login-input-container">
+            <div class="login-input-mail-container">
+                <label for="login-input-mail" class="login-input-mail-container-label">e-mail</label>
+                <input id="login-input-mail" type="email" v-model="login_email" class="login-input-mail-container-email">
+            </div>
+            <div class="login-input-password-container">
+                <label for="login-input-password" class="login-input-password-container-label">パスワード</label>
+                <input id="login-input-password" type="text" v-model="login_password" class="login-input-password-container-password">
+            </div>
+            <p class="error-message"> {{ error_message }}</p>
+            <button v-on:click="loginUser" class="loginbutton">ログイン</button>
+            <!-- <button v-on:click="loginUser" class="loginbuttonG">Googleでログイン</button> -->
         </div>
-        <button v-on:click="loginUser">ログイン</button>
-        <p>{{ error_message }}</p>
     </div>
 </template>
 
-<script setup lang="ts">
+<script setup >
 const API_URL = 'http://localhost:4000'
 
 const login_email = ref('')
@@ -65,6 +72,91 @@ const loginUser = async () => {
         error_message.value = 'データの登録に失敗しました'
         return
     }
+}
 
+const backtop=()=>{
+    navigateTo({path: '/'})
 }
 </script>
+
+
+<style lang="scss" scoped>
+.login-container{
+    margin: 0;
+}
+img.modoru{
+    width: 45px;
+    height: 45px;
+}
+.login-title{
+    background-color: #FF7F50;
+    color: #FFF;
+    text-align: center;
+    margin-top: 1%;
+}
+.login-input-mail-container{
+    margin-top: 10%;
+    margin-left: 8%;
+    &-label{
+        font-size: 20px;
+        margin-right: 5%;
+    }
+    &-email{
+        margin-left: 10%;
+        border: 1px solid #FF7F50;
+        height: 20px;
+        width: 50%;
+    }
+}
+.login-input-password-container{
+    margin-top: 5%;
+    margin-left: 8%;
+    &-label{
+        margin-bottom: 2%;
+        font-size: 20px;
+        margin-right: 2%;
+        padding-top: 1px;
+    }
+    &-password{
+        margin-left: 2%;
+        border: 1px solid #FF7F50;
+        margin-bottom: 2%;
+        height: 20px;
+        width: 50%;
+    }
+}
+.error-message{
+    
+    color: #ff4401;
+    text-align: center;
+    width: 80%;
+    margin-left: 10%;
+    height: 30px;
+    padding-top:4px
+}
+.loginbutton{  
+    background: #FF7F50;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-left: 10px;
+    margin-bottom: 2%;
+    border: 0;
+    
+    text-align: center;
+    margin-left: 30%;
+    width: 40%;
+    height: 35px;
+}
+.loginbutton:active{
+    background: #ff4401;
+    color: #FFF;
+}
+.loginbuttonG{
+    border-top: 1px solid #ff4401;
+    margin-left: 45%;
+    border-color: #c8eac3;
+}
+</style>

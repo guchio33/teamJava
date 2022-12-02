@@ -1,22 +1,27 @@
 <template>
-    <div class="register-input-container">
-        <div class="register-input-name-container">
-            <label for="register-input-name">名前</label>
-            <input id="register-input-name" type="text" v-model="register_name">
+    <div class="login-container">
+        <img src="../images/Group_86.png" alt="[画像]" class="modoru" v-on:click="backtop()">
+        <div>
+            <h1 class="login-title">新規登録</h1>
         </div>
-        <div class="register-input-mail-container">
-            <label for="register-input-mail">e-mail</label>
-            <input id="register-input-mail" type="email" v-model="register_email">
-        </div>
-        <div class="register-input-password-container">
-            <label for="register-input-password">パスワード</label>
-            <input id="register-input-password" type="text" v-model="register_password">
-        </div>
+        <div class="register-input-container">
+            <div class="register-inputーcontainer-name">
+                <label class="register-input-container-name-label"  for="register-input-container-name-label">名前</label>
+                <input class="register-input-container-name-input" id="register-input-container-name-input" type="text" v-model="register_name">
+            </div>
+            <div class="register-input-container-mail">
+                <label class="register-input-container-mail-label" for="register-input-mail">e-mail</label>
+                <input class="register-input-container-mail-input" id="register-input-mail" type="email" v-model="register_email">
+            </div>
+            <div class="register-input-container-password">
+                <label class="register-input-container-password-label" or="register-input-password">パスワード</label>
+                <input class="register-input-container-password-input" id="register-input-password" type="text" v-model="register_password">
+            </div>
 
-        <button v-on:click="registerUser()">新規登録</button>
-        <p>{{ error_message }}</p>
+            <p class="error-message">{{ error_message }}</p>
+            <button class="register-button" v-on:click="registerUser()">新規登録</button>
+        </div>
     </div>
-
 </template>
 
 <script setup lang="ts">
@@ -88,4 +93,105 @@ const registerUser = () => {
     }
 
 }
+const backtop=()=>{
+    navigateTo({path: '/'})
+}
 </script>
+
+<style lang="scss" scoped>
+.login-container{
+    margin: 0;
+}
+img.modoru{
+    width: 45px;
+    height: 45px;
+}
+.login-title{
+    background-color: #FF7F50;
+    color: #FFF;
+    text-align: center;
+    margin-top: 1%;
+}
+
+.register-input-container{
+    margin-top: 10%;
+    
+    &-name{
+        &-label{
+            font-size: 20px;
+            margin-right:  12%;
+            margin-left: 8%;
+        }
+        &-input{
+            margin-left: 10%;
+            border: 1px solid #FF7F50;
+            height: 20px;
+            width: 50%;
+        }
+    }
+    &-mail{
+    margin-top: 5%;
+        &-label{
+            margin-bottom: 2%;
+            font-size: 20px;
+            margin-right: 15%;
+            padding-top: 1px;
+            margin-left: 8%;
+
+        }
+        &-input{
+            margin-left: 2%;
+            border: 1px solid #FF7F50;
+            margin-bottom: 2%;
+            height: 20px;
+            width: 50%;
+        }
+    }
+    &-password{
+        margin-top: 5%;
+        &-label{
+            margin-bottom: 2%;
+            font-size: 20px;
+            margin-right: 4%;
+            padding-top: 1px;
+            margin-left: 8%;
+        }
+        &-input{
+            margin-left: 2%;
+            border: 1px solid #FF7F50;
+            margin-bottom: 2%;
+            height: 20px;
+            width: 50%;
+        }
+    }
+}
+
+.error-message{
+    color: #ff4401;
+    text-align: center;
+    width: 80%;
+    margin-left: 10%;
+    height: 30px;
+    padding-top:4px
+}
+.register-button{  
+    background: #FF7F50;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-left: 10px;
+    margin-bottom: 2%;
+    border: 0;
+    text-align: center;
+    margin-left: 30%;
+    width: 40%;
+    height: 35px;
+}
+.loginbutton:active{
+    background: #ff4401;
+    color: #FFF;
+}
+
+</style>

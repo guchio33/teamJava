@@ -4,5 +4,5 @@ class Post < ApplicationRecord
   has_many :post_tag_relation
   has_many :like
   has_many :room
-  mount_uploader :image, ImageUploader
+  mount_base64_uploader :image, ImageUploader
 end

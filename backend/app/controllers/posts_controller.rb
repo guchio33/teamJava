@@ -1,4 +1,4 @@
-class PostsController < ApplicationController
+class PostsController < ApplicationController 
 
     # GET
     def index
@@ -15,6 +15,7 @@ class PostsController < ApplicationController
     # POST
     def create
         @post = Post.new(post_params)
+
         if @post.save
           render json: @post
         else
@@ -48,5 +49,42 @@ class PostsController < ApplicationController
     def post_params
         params.permit(:title, :image, :comment, :status_id)
     #   params.permit(:title, :image, :comment, :status_id, :post_tag_relation_id)
+    end
+
+    def image_from_base64(b64)
+      bin = Base64.decode64(b64)
+      file = Tempfile.new('img')
+      file.binmode
+      file << bin
+      file.rewind
+    
+      self.image = file
+    end
+
+    def change_img_params(img)
+      begin
+        Base64.decode64(img) #To check if thats a base64 string
+        if img
+          img = file_decode(img.split(',')[1],"some file name") #getting only the string leaving out the data/<format>
+        end
+      rescue Exception => e
+        img #Returning if its not a base64 string
+      end
+    end
+
+    def file_decode(base, filename)
+      file = Tempfile.new([file_base_name(filename), file_extn_name(filename)])
+      file.binmode
+      file.write(Base64.decode64(base))
+      file.close
+      file
+    end
+    
+    def file_base_name(file_name)
+        File.basename(file_name, file_extn_name(file_name))
+    end
+    
+    def file_extn_name(file_name)
+        File.extname(file_name)
     end
 end

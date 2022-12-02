@@ -43,3 +43,5 @@ gem 'devise'
 gem 'devise_token_auth'
 
 gem 'carrierwave'
+gem 'carrierwave-base64'
+gem 'carrierwave-mongoid'

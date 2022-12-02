@@ -10,7 +10,7 @@
                 <label class="exhibit-input-container-img-title" for="exhibit-input-img">商品画像</label>
                 <p class="exhibit-input-container-img-title-sub">※写真は最低3枚(全体像含む)</p>
             </div>
-            <input class="exhibit-input-container-img-input" type="file" id="exhibit-input-img" >
+            <input class="exhibit-input-container-img-input" type="file" id="exhibit-input-img" @change="onImageUploaded">
             <div class="exhibit-input-container-comment">
                 <label class="exhibit-input-container-comment-title" for="exhibit-input-comment">コメント</label>
                 <input class="exhibit-input-container-comment-input" type="text" id="exhibit-input-comment" v-model="post_comment">
@@ -26,19 +26,23 @@
     </div>
 </template>
 
-<script setup lant="ts">
+<script setup lan="ts">
 const post_title=ref('')
 const post_comment=ref('')
 const API_URL = 'http://localhost:4000'
-
-const post_data = {
-    'title': post_title,
-    'comment': post_comment,
-    'image': "aaaaa",
-    'status_id': 17,
-}
+let product_img
 
 const post=()=>{
+    if (!product_img) {
+        console.log(画像を設定してください)
+        return 
+    }
+    const post_data = {
+        'title': post_title,
+        'comment': post_comment,
+        'image': product_img,
+        'status_id': 1,
+    }
     const messageCreateController = useFetch(API_URL+ '/posts', {
         method: 'POST',
         body: post_data,
@@ -46,13 +50,38 @@ const post=()=>{
             'access_token': localStorage.getItem('access_token'),
             'client': localStorage.getItem('client'),
             'expiry': localStorage.getItem('expiry'),
-            'uid': localStorage.getItem('uid')
+            'uid': localStorage.getItem('uid'),
         }
     })
     .then((e) => {
         console.log(e)
     })
 }
+
+//画像入れ込み
+const createImage = (image, _thisIndexNumber) => {
+  //FileReader.readAsDataURL()を使用してプレビュー用の画像データを取得。
+  const reader = new FileReader();
+  reader.readAsDataURL(image);
+  reader.onload = () => {
+    product_img = reader.result;
+  };
+};
+
+// 画像データ等取得
+const onImageUploaded = (e) => {
+  if (e.target instanceof HTMLInputElement) {
+    if (e.target.files) {
+      const image = e.target.files[0];
+      product_img = e.target.files[0];
+      const _thisId = e.target.id;
+      let _thisIndex = _thisId.split("__");
+      let _thisIndexNumber = Number(_thisIndex[1]);
+
+      createImage(image, _thisIndexNumber);
+    }
+  }
+};
 </script>
 
 <style lang="scss" scoped>

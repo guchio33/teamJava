@@ -10,12 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_11_08_163210) do
+ActiveRecord::Schema.define(version: 2022_11_26_091725) do
 
   create_table "departments", charset: "utf8mb4", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "entries", charset: "utf8mb4", force: :cascade do |t|
+    t.bigint "room_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["room_id"], name: "index_entries_on_room_id"
+    t.index ["user_id"], name: "index_entries_on_user_id"
   end
 
   create_table "faculties", charset: "utf8mb4", force: :cascade do |t|
@@ -38,6 +47,8 @@ ActiveRecord::Schema.define(version: 2022_11_08_163210) do
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "room_id"
+    t.index ["room_id"], name: "index_messages_on_room_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
@@ -54,32 +65,14 @@ ActiveRecord::Schema.define(version: 2022_11_08_163210) do
     t.string "title"
     t.string "image"
     t.text "comment"
-    t.bigint "user_id", null: false
+    t.bigint "user_id"
     t.bigint "status_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "post_tag_relation_id", null: false
+    t.bigint "post_tag_relation_id"
     t.index ["post_tag_relation_id"], name: "index_posts_on_post_tag_relation_id"
     t.index ["status_id"], name: "index_posts_on_status_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
-  end
-
-  create_table "room_messages", charset: "utf8mb4", force: :cascade do |t|
-    t.bigint "room_id", null: false
-    t.bigint "message_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["message_id"], name: "index_room_messages_on_message_id"
-    t.index ["room_id"], name: "index_room_messages_on_room_id"
-  end
-
-  create_table "room_users", charset: "utf8mb4", force: :cascade do |t|
-    t.bigint "room_id", null: false
-    t.bigint "user_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["room_id"], name: "index_room_users_on_room_id"
-    t.index ["user_id"], name: "index_room_users_on_user_id"
   end
 
   create_table "rooms", charset: "utf8mb4", force: :cascade do |t|
@@ -141,18 +134,17 @@ ActiveRecord::Schema.define(version: 2022_11_08_163210) do
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
+  add_foreign_key "entries", "rooms"
+  add_foreign_key "entries", "users"
   add_foreign_key "likes", "posts"
   add_foreign_key "likes", "users"
+  add_foreign_key "messages", "rooms"
   add_foreign_key "messages", "users"
   add_foreign_key "post_tag_relations", "posts"
   add_foreign_key "post_tag_relations", "tags"
   add_foreign_key "posts", "post_tag_relations"
   add_foreign_key "posts", "statuses"
   add_foreign_key "posts", "users"
-  add_foreign_key "room_messages", "messages"
-  add_foreign_key "room_messages", "rooms"
-  add_foreign_key "room_users", "rooms"
-  add_foreign_key "room_users", "users"
   add_foreign_key "rooms", "posts"
   add_foreign_key "schools", "departments"
   add_foreign_key "schools", "faculties"

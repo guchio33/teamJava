@@ -1,21 +1,21 @@
 <template>
     <div>
-        <img src="../images/Group_86.png">
+        <img src="../images/Group_86.png" alt="[画像]" class="modoru">
         <div>
             <h1 class="login-title">ログイン</h1>
         </div>
         <div class="login-input-container">
             <div class="login-input-mail-container">
-                <label for="login-input-mail">e-mail</label>
-                <input id="login-input-mail" type="email" v-model="login_email">
+                <label for="login-input-mail" class="input-email-label">e-mail</label>
+                <input id="login-input-mail" type="email" v-model="login_email" class="input-email">
             </div>
             <div class="login-input-password-container">
-                <label for="login-input-password">パスワード</label>
-                <input id="login-input-password" type="text" v-model="login_password">
+                <label for="login-input-password" class="input-password-label">パスワード</label>
+                <input id="login-input-password" type="text" v-model="login_password" class="input-password">
             </div>
-            <button v-on:click="loginUser">ログイン</button>
+            <button v-on:click="loginUser" class="loginbutton">ログイン</button>
             <p>{{ error_message }}</p>
-            <h1>suply</h1>
+            <button v-on:click="loginUser" class="loginbuttonG">Googleでログイン</button>
         </div>
     </div>
 </template>
@@ -78,9 +78,50 @@ const loginUser = async () => {
 
 
 <style>
+    img.modoru{
+        width: 30px;
+        height: 35px;
+    }
     .login-title{
         background-color: #FF7F50;
         color: #FFF;
         text-align: center;
+    }
+    .input-email-label{
+        margin-left: 40%;
+        margin-bottom: 2%;
+    }
+    .input-email{
+        margin-left: 2%;
+        border-color: #FF7F50;
+        margin-bottom: 2%;
+    }
+    .input-password-label{
+        margin-left: 38%;
+        margin-bottom: 2%;
+    }
+    .input-password{
+        margin-left: 2%;
+        border-color: #FF7F50;
+        margin-bottom: 2%;
+    }
+    .loginbutton{  
+        background: #FF7F50;
+        color: #c8eac3;
+        padding: 10px;
+        text-align: center;
+        text-decoration: none;
+        border-radius: 30px;
+        margin-left: 47%;
+        margin-bottom: 2%;
+    }
+    .loginbutton:active{
+        background: #ff4401;
+        color: #FFF;
+    }
+    .loginbuttonG{
+        border-top: 1px solid #ff4401;
+        margin-left: 45%;
+        border-color: #c8eac3;
     }
 </style>

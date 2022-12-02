@@ -91,7 +91,6 @@ const registerUser = () => {
         error_message.value = 'データの登録に失敗しました'
         return
     }
-
 }
 const backtop=()=>{
     navigateTo({path: '/'})

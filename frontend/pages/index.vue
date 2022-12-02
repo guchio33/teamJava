@@ -5,6 +5,7 @@
                 <p class="logo-sub">繋ぐ✖︎マーケット</p>
                 <h1 class="logo-title">つなぐま</h1>
             </div>
+            <img class="logo-img" src="../images/logo.png">
             <div class="button">
                 <nuxt-link to="/login">
                     <button class="button-login">ログイン</button>
@@ -21,7 +22,7 @@
 $main-color: #FF7F50;
 .logo{
     text-align: center;
-    margin-top: 60%;
+    margin-top: 40%;
     &-sub{
         color:#80817F;
         font-size: 20px;
@@ -33,10 +34,16 @@ $main-color: #FF7F50;
         margin-top: 0px;
     }
 }
+.logo-img{
+    text-align: center;
+    width: 250px;
+    height: 250px;
+    margin-left: 18%;
+}
 
 .button{
     text-align: center;
-    margin-top: 40%;
+    margin-top: 10%;
     
     &-login{
         background: #FF7F50;
@@ -66,8 +73,6 @@ $main-color: #FF7F50;
 .background{
     margin-top: -20px;
     // background-color: $main-color;
-    width: 100%;
-    height: 900px;
 }
 // .background-logo{
 //     background-color: white;

@@ -5,20 +5,108 @@
         <div class="tag">
             <p class="tag-text">名城大学</p>
         </div>
+
+
         <div class="post-list">
-            <div v-for="post in postlist" :key="post.id" class="post-container" v-on:click="movePostDetail(post.id)">
+            <div class="post-container" v-on:click="movePostDetail(postSecond.id)">
+                <div class="post-container-user">
+                    <img src="../images/icon3.jpg" class="post-container-user-icon">
+                    <p class="post-container-user-name">ぐちお</p>
+                </div>
+                <img src="../images/pen.jpg" class="post-container-img">
+                <div class="post-container-sub">
+                    <p class="post-container-sub-title">{{ postSecond.title}}</p>
+                    <div class="post-container-sub-tag">
+                        <p class="post-container-sub-tag-text">名城大学</p>
+                    </div>
+                </div>
+            </div> 
+
+
+            <div class="post-container" >
+                <div class="post-container-user">
+                    <img src="../images/icon1.png" class="post-container-user-icon">
+                    <p class="post-container-user-name">{{postdata[0].name}}</p>
+                </div>
+                <img src="../images/sample1.jpg" class="post-container-img">
+                <div class="post-container-sub">
+                    <p class="post-container-sub-title">{{ postdata[0].title}}</p>
+                    <div class="post-container-sub-tag">
+                        <p class="post-container-sub-tag-text">名城大学</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="post-container" >
+                <div class="post-container-user">
+                    <img src="../images/icon2.jpg" class="post-container-user-icon">
+                    <p class="post-container-user-name">{{postdata[1].name}}</p>
+                </div>
+                <img src="../images/sample2.jpg" class="post-container-img">
+                <div class="post-container-sub">
+                    <p class="post-container-sub-title">{{ postdata[1].title}}</p>
+                    <div class="post-container-sub-tag">
+                        <p class="post-container-sub-tag-text">名城大学</p>
+                    </div>
+                </div>
+            </div>
+
+            <div  class="post-container" >
+                <div class="post-container-user">
+                    <img src="../images/icon3.jpg" class="post-container-user-icon">
+                    <p class="post-container-user-name">{{postdata[2].name}}</p>
+                </div>
+                <img src="../images/sample3.jpg" class="post-container-img">
+                <div class="post-container-sub">
+                    <p class="post-container-sub-title">{{ postdata[2].title}}</p>
+                    <div class="post-container-sub-tag">
+                        <p class="post-container-sub-tag-text">名城大学</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="post-container" v-on:click="movePostDetail(postNew.id)">
+                <div class="post-container-user">
+                    <img src="../images/icon2.jpg" class="post-container-user-icon">
+                    <p class="post-container-user-name">あべし</p>
+                </div>
+                <img src="../images/sample4.jpg" class="post-container-img">
+                <div class="post-container-sub">
+                    <p class="post-container-sub-title">{{ postNew.title}}</p>
+                    <div class="post-container-sub-tag">
+                        <p class="post-container-sub-tag-text">名城大学</p>
+                    </div>
+                </div>
+            </div> 
+            
+            <!-- <div  v-for="post in postsData" :key="post.id" class="post-container" v-on:click="movePostDetail(post.id)">
                 <div class="post-container-user">
                     <img src="../images/coffee.jpg" class="post-container-user-icon">
                     <p class="post-container-user-name">User</p>
                 </div>
-                <img src="../images/sample1.jpg" class="post-container-img">
+                <img src="../images/pen.jpg" class="post-container-img">
                 <div class="post-container-sub">
                     <p class="post-container-sub-title">{{ post.title}}</p>
                     <div class="post-container-sub-tag">
                         <p class="post-container-sub-tag-text">名城大学</p>
                     </div>
                 </div>
-            </div> 
+            </div>  -->
+            <!-- <div v-for="post in postsData" :key="post.id" class="post-container" v-on:click="movePostDetail(post.id)">
+                <div class="post-container-user">
+                    <img :src=post.icon class="post-container-user-icon">
+                    <p class="post-container-user-name">User</p>
+                </div>
+                <img src={{post.image}} class="post-container-img">
+                <div class="post-container-sub">
+                    <p class="post-container-sub-title">{{ post.title}}</p>
+                    <div class="post-container-sub-tag">
+                        <p class="post-container-sub-tag-text">名城大学</p>
+                    </div>
+                </div>
+            </div>  -->
+            
+            
         </div>
         <Footer />
     </div>
@@ -29,6 +117,32 @@ import Header from '../components/Header.vue';
 import Footer from '../components/Footer.vue';
 
 // console.log(localStorage)
+
+const postdata=[
+    { 
+      'title': "プリンター",
+      'comment': "新しいのを買ってしまったため、使わなくなりました。",
+      'image': "../images/sample1.jpg",
+      'status_id': 17,
+      'icon':"../images/icon1.png",
+      'name':"せー"
+    },
+    {
+      'title': "熊の置物",
+      'comment': "部屋の場所をとってしまっているため、誰かに渡したいです",
+      'image': "../images/sample2.jpg",
+      'status_id': 17,
+      'user-icon':"../images/icon2.jpg",
+      'name':"あべし"
+    },
+    {
+      'title': "イヤホン",
+      'comment': "ワイヤレスを買ってしまったため、現在は使っておりません。",
+      'image': "../images/sample3.jpg",
+      'status_id': 17,
+      'user-icon':"../images/icon3.jpg",
+      'name':"ぐちお"
+    }]
 
 onMounted(() => {
     if (localStorage.current_user) {
@@ -45,8 +159,9 @@ const { data: postlists} = await useFetch(API_URL+'/posts',
         'expiry': localStorage.getItem('expiry'),
         'uid': localStorage.getItem('uid')
     }})
-const postlist=postlists.value
-console.log(postlists.value)
+const postNew=postlists.value[0]
+const postSecond=postlists.value[1]
+console.log(postlists.value[0])
 
 const movePostDetail=(post_id)=>{
     console.log(post_id)

@@ -4,11 +4,12 @@
             <nuxt-link to="/profilesetting">   
                 <p class="background-edituser">プロフィール変更</p>
             </nuxt-link>
-            <img class="user-icon" src="../images/coffee.jpg">
+            <img class="user-icon" src="../images/icon2.jpg">
         </div>
-        <p class="user-name">{{profile.name}}</p>
+        <!-- <p class="user-name">{{profile.name}}</p> -->
+        <p class="user-name">あべし</p>
         <!-- <p class="user-comment">{{profile.comment}}</p> -->
-        <p class="user-comment">名城大学都市情報学部の4年生です</p>
+        <p class="user-comment">名城大学理工学部情報工学科の３年生です</p>
         <Footer />
     </div>
 </template>

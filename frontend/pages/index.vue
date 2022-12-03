@@ -27,7 +27,6 @@ $main-color: #FF7F50;
         color:#80817F;
         font-size: 20px;
         margin-bottom: 0;
-        
     }
     &-title{
         font-size: 60px;

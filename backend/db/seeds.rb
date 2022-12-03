@@ -30,7 +30,7 @@ Room.create!(post_id: 14)
 Entry.create!(room_id:1,user_id:1)
 Entry.create!(room_id:1,user_id:2)
 
-Message.create!(user_id:1,room_id:1,message:"はじめましてtestです。よろしくお願いします。")
+Message.create!(user_id:1,room_id:1,message:"はじめましてぐちおです。よろしくお願いします。")
 Message.create!(user_id:2,room_id:1,message:"初めましてsampleです。よろしくです")
 # Room_user.create(room_id:1＝
 

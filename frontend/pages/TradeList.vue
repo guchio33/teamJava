@@ -7,14 +7,29 @@
         </div>
         <div class="trade-list">
             <div v-if="exhibitView">
+                <div  class="trade-container" v-on:click="movetrade(exhibit.id)">
+                    <div class="trade-container-user">
+                        <img src="../images/icon3.jpg" class="trade-container-user-icon">
+                        <p class="trade-container-user-name">ぐちお</p>
+                    </div>
+                    <img src="../images/pen.jpg" class="trade-container-img">
+                    <div class="trade-container-sub">
+                        <p class="trade-container-sub-title">ペン</p>
+                        <div class="trade-container-sub-tag">
+                            <p class="trade-container-sub-tag-text">名城大学</p>
+                        </div>
+                    </div>
+                </div> 
+
                 <div  v-for=" exhibit in exhibitList" :key=" exhibit.id" class="trade-container" v-on:click="movetrade(exhibit.id)">
                     <div class="trade-container-user">
-                        <img src="../images/coffee.jpg" class="trade-container-user-icon">
-                        <p class="trade-container-user-name">User</p>
+                        <img src="../images/icon1.png" class="trade-container-user-icon">
+                        <p class="trade-container-user-name">せー</p>
                     </div>
                     <img src="../images/sample1.jpg" class="trade-container-img">
                     <div class="trade-container-sub">
-                        <p class="trade-container-sub-title">{{ exhibit.title}}</p>
+                        <!-- <p class="trade-container-sub-title">{{ exhibit.title}}</p> -->
+                        <p class="trade-container-sub-title">プリンター</p>
                         <div class="trade-container-sub-tag">
                             <p class="trade-container-sub-tag-text">名城大学</p>
                         </div>
@@ -24,12 +39,28 @@
             <div v-if="transaction">
                 <div v-for=" transaction in transactionList" :key=" transaction.id" class="trade-container" v-on:click="movetrade(transaction.id)">
                     <div class="trade-container-user">
-                        <img src="../images/coffee.jpg" class="trade-container-user-icon">
-                        <p class="trade-container-user-name">User</p>
+                        <img src="../images/icon2.jpg" class="trade-container-user-icon">
+                        <p class="trade-container-user-name">あべし</p>
                     </div>
-                    <img src="../images/sample1.jpg" class="trade-container-img">
+                    <img src="../images/sample4.jpg" class="trade-container-img">
                     <div class="trade-container-sub">
-                        <p class="trade-container-sub-title">{{ transaction.title}}</p>
+                        <!-- <p class="trade-container-sub-title">{{ transaction.title}}</p> -->
+                        <p class="trade-container-sub-title">コーヒーミル</p>
+                        <div class="trade-container-sub-tag">
+                            <p class="trade-container-sub-tag-text">名城大学</p>
+                        </div>
+                    </div> 
+                </div>
+
+                <div class="trade-container" >
+                    <div class="trade-container-user">
+                        <img src="../images/icon2.jpg" class="trade-container-user-icon">
+                        <p class="trade-container-user-name">あべし</p>
+                    </div>
+                    <img src="../images/sample2.jpg" class="trade-container-img">
+                    <div class="trade-container-sub">
+                        <!-- <p class="trade-container-sub-title">{{ transaction.title}}</p> -->
+                        <p class="trade-container-sub-title">熊の置物</p>
                         <div class="trade-container-sub-tag">
                             <p class="trade-container-sub-tag-text">名城大学</p>
                         </div>

@@ -3,9 +3,10 @@
         <Header headerTitle="DM"/>
         <div class="dmlist">
             <div v-for="dm in dmlist" :key="dm.id" class="dm-container" v-on:click="moveDm(dm.last_message.room_id)">
-                <img src="../images/coffee.jpg" class="dm-container-user-icon">
+                <img src="../images/icon3.jpg" class="dm-container-user-icon">
                 <div class="dm-container-user-data">
-                    <p class="dm-container-user-data-name">{{ dm.other_user.name}}</p> 
+                    <!-- <p class="dm-container-user-data-name">{{ dm.other_user.name}}</p>  -->
+                    <p class="dm-container-user-data-name">ぐちお</p> 
                     <p class="dm-container-user-data-comment">{{ dm.last_message.message}}</p>
                 </div>
             </div> 

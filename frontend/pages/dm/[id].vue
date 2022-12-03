@@ -5,7 +5,7 @@
             <div v-for="message in messages" :key="messages.id" class="dm-container" >
                 <!-- 相手 -->
                 <div v-if="(message.user_id!=current_id)" class="dm-container-other">
-                    <img class="dm-container-other-icon" src=message. >
+                    <img class="dm-container-other-icon" src="../../images/icon3.jpg" >
                     <p class="dm-container-other-message">{{ message.message}}</p>
                 </div>
                 <!-- 自分 -->
@@ -31,6 +31,7 @@ const { id } = route.params;
 const input_message = ref('')
 const current_id= ref(localStorage.getItem('current_id'))
 console.log(current_id)
+
 const { data: messageArray} = await useFetch(API_URL+'/rooms/'+`${id}`, 
     {headers:{
         'access_token': localStorage.getItem('access_token'),
@@ -38,7 +39,7 @@ const { data: messageArray} = await useFetch(API_URL+'/rooms/'+`${id}`,
         'expiry': localStorage.getItem('expiry'),
         'uid': localStorage.getItem('uid')
     }})
-const messages=messageArray.value.message
+const messages=ref(messageArray.value.message)
 console.log(messages)
 
 const message_data = {
@@ -47,7 +48,7 @@ const message_data = {
     'room_id': id,
 }
 
-const sendMessage=()=>{
+const sendMessage = ()=> {
     const messageCreateController = useFetch(API_URL+ '/messages', {
         method: 'POST',
         body: message_data,
@@ -58,8 +59,20 @@ const sendMessage=()=>{
             'uid': localStorage.getItem('uid')
         }
     })
-    .then((e) => {
+    .then(async (e) => {
         console.log(e)
+        const  { data: messageArray2}=  await useFetch(API_URL+'/rooms/'+`${id}`, 
+        {headers:{
+            'access_token': localStorage.getItem('access_token'),
+            'client': localStorage.getItem('client'),
+            'expiry': localStorage.getItem('expiry'),
+            'uid': localStorage.getItem('uid')
+        }})
+        console.log(messageArray2.value.message)
+        
+        messages.value = messageArray2.value.message
+        input_message.value=''
+        
     })
 }
 </script>

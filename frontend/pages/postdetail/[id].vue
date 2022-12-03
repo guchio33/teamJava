@@ -5,12 +5,16 @@
                 <img src="../../images/times.png" class="back-button-img">
             </nuxt-link>
         </div>
-        <img src="../../images/sample1.jpg" class="post-img">
+        <img src="../../images/pen.jpg" class="post-img">
 
         <div class="post-container">
-            <p class="post-container-title">{{post.title}}</p>
+            <!-- <p class="post-container-title">{{post.title}}</p>
             <h5 class="post-container-comment">商品説明</h5>
             <p class="post-container-comment-text">{{post.comment}}</p>
+            <button v-on:click="tradeStart()" class="post-container-tradebutton">取引開始</button> -->
+            <p class="post-container-title">ペン</p>
+            <h5 class="post-container-comment">商品説明</h5>
+            <p class="post-container-comment-text">新品です</p>
             <button v-on:click="tradeStart()" class="post-container-tradebutton">取引開始</button>
         </div>
     </div>

@@ -1,4 +1,4 @@
-[]<template>
+<template>
     <div class="background">
         <div class="back-button">
             <nuxt-link to="/top">
